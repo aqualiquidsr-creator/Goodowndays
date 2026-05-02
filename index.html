@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goodowndays.</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- ตั้งค่าพื้นฐาน --- */
+        :root {
+            --primary-color: #D689A3; 
+            --primary-light: #FCE4EC;
+            --secondary-color: #333;
+            --bg-color: #F9F9F9;
+            --white: #FFFFFF;
+            --text-muted: #777;
+            --font-family: 'Prompt', sans-serif;
+            --border-style: 2px solid #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--secondary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; transition: 0.3s; }
+        ul { list-style: none; }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Navigation Bar --- */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: 600; color: var(--primary-color); letter-spacing: -1px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { font-size: 16px; color: var(--secondary-color); position: relative; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--white);
+            padding-top: 80px;
+        }
+
+        .hero-flex { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+        .hero-content { flex: 1; padding-right: 50px; }
+        .hero h1 { font-size: 56px; font-weight: 600; margin-bottom: 20px; }
+        .hero h1 span { color: var(--primary-color); }
+        .hero p { font-size: 18px; color: var(--text-muted); margin-bottom: 40px; max-width: 500px; }
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(214, 137, 163, 0.3);
+        }
+
+        .hero-image-bg {
+            width: 380px; height: 380px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(214, 137, 163, 0.15);
+        }
+        .hero-main-img { 
+            width: 300px; height: 300px; 
+            object-fit: cover; border-radius: 20px; 
+            transform: rotate(-5deg); 
+            border: var(--border-style);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .services-section {
+            padding: 100px 0;
+            background-color: #FFF0F5;
+            border-top: var(--border-style);
+        }
+
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 36px; font-weight: 600; margin-bottom: 10px; }
+        .section-header .line { width: 60px; height: 4px; background: var(--primary-color); margin: 0 auto; border-radius: 2px; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: var(--border-style);
+            padding: 30px;
+            border-radius: 24px;
+            transition: 0.3s;
+            box-shadow: 6px 6px 0px #333;
+        }
+        .service-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0px var(--primary-color); }
+        .service-icon { font-size: 32px; margin-bottom: 15px; }
+        .service-card h3 { font-size: 18px; margin-bottom: 10px; font-weight: 600; }
+
+        /* --- ช่องทางการติดต่อ --- */
+        .contact-section {
+            padding: 100px 0;
+            background-color: #FFF0F5; 
+            border-bottom: var(--border-style);
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            border: var(--border-style);
+            border-radius: 30px;
+            padding: 50px 30px;
+            box-shadow: 10px 10px 0px var(--primary-light);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px;
+            border: var(--border-style);
+            border-radius: 15px;
+            font-weight: 500;
+            color: var(--secondary-color);
+            transition: 0.3s;
+        }
+        .contact-link.line:hover { background: #06C755; color: white; border-color: #06C755; }
+        .contact-link.ig:hover { background: #E1306C; color: white; border-color: #E1306C; }
+        .contact-link img { width: 24px; height: 24px; }
+
+        footer { padding: 40px 0; text-align: center; background: var(--white); border-top: 1px solid #eee; }
+
+        @media (max-width: 768px) {
+            .hero-flex { flex-direction: column; text-align: center; }
+            .hero-content { padding-right: 0; margin-bottom: 50px; }
+            .hero h1 { font-size: 38px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">goodowndays</a>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">หน้าหลัก</a></li>
+                    <li><a href="#services">เราทำอะไร</a></li>
+                    <li><a href="#contact">ติดต่อ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-flex">
+                <div class="hero-content">
+                    <h1>สร้างวันดีๆ ไปกับ <span>Goodowndays</span></h1>
+                    <p>| Making Every Moment a Good Day.</p>
+                    <a href="#services" class="btn">สำรวจบริการ</a>
+                </div>
+                <div class="hero-image-container">
+                    <div class="hero-image-bg">
+                        <img src="hero-image.png" alt="Hero Image" class="hero-main-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>เราทำอะไรบ้าง ?</h2>
+                <div class="line"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3>แปลงไฟล์ PDF</h3>
+                    <p>ฟอนต์ไม่เพี้ยน จัดหน้าสวยงามตามต้นฉบับ</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>สไลด์ Canva-PPT</h3>
+                    <p>รับทำสไลด์งานนำเสนอ ดีไซน์ทันสมัย</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>เขียนโค้ด HTML</h3>
+                    <p>รับเขียนโค้ดภาษา HTML ระดับพื้นฐาน</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>แก้ปัญหา Windows</h3>
+                    <p>เบื้องต้นผ่าน AnyDesk สะดวก รวดเร็ว</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">❤️</div>
+                    <h3>Social Services</h3>
+                    <p>รับคอมเมนท์ กดหัวใจ Tiktok, FB, YT, X</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Line Sticker</h3>
+                    <p>รับทำสติ๊กเกอร์ไลน์ในแบบของคุณ</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>จิตอาสา กยศ.</h3>
+                    <p>รับเก็บชั่วโมงและ Set e-learning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <h2 style="font-size: 30px; margin-bottom: 10px;">ช่องทางการติดต่อร้าน</h2>
+                <p style="color: #777;">สนใจบริการไหน ทักมาสอบถามคุยกันก่อนได้เลยนะที่ Line Oa หรือ Instagram </p>
+                
+                <div class="contact-methods">
+                    <a href="https://lin.ee/WzHRpS4" target="_blank" class="contact-link line">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="Line">
+                        Line Official Account
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="copyright">&copy; 2026 Goodowndays. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
